@@ -30,4 +30,4 @@ jobs:
         force-add: 'true'
         files: target/
         name: Hernan M Calisto
-        email: hernantvg@gmail.com
+        email: hernantvg@gmail.co
