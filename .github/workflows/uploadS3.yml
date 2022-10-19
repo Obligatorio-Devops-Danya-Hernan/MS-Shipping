@@ -11,8 +11,8 @@ jobs:
       - uses: actions/checkout@master
       - uses: hkusu/s3-upload-action@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ASIAU4AK33JPNY4YSHJ6
+          aws-secret-access-key: xOVuMrUTYh1OuvCuiL//1AHCMW8fHNsc2AIEuO8G
           aws-region: 'us-east-1'
-          aws-bucket: ${{ secrets.AWS_BUCKET }}
+          aws-bucket: obligatorio-devops-danya-hernan
           file-path: './target/'
