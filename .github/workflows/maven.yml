@@ -39,5 +39,5 @@ jobs:
         aws-bucket: ${{ secrets.AWS_BUCKET }}
         bucket-root: jars-ms-shipping
         destination-dir: ${{ env.DATE }}
-        file-path: '/home/runner/work/MS-Products/MS-Products/target/shipping-service-example-0.0.1-spring-boot.jar'
+        file-path: '/home/runner/work/MS-Shipping/MS-Shippings/target/shipping-service-example-0.0.1-spring-boot.jar'
 
