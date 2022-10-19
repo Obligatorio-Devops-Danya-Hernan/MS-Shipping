@@ -15,4 +15,4 @@ jobs:
           aws-secret-access-key: xOVuMrUTYh1OuvCuiL//1AHCMW8fHNsc2AIEuO8G
           aws-region: 'us-east-1'
           aws-bucket: obligatorio-devops-danya-hernan
-          file-path: './target/'
+          file-path: './README.md'
