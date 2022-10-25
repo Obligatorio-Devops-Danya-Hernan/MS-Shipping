@@ -26,18 +26,24 @@ jobs:
       with:
        timezoneLinux: "America/Montevideo"
 
-    - name: Set current date as env variable
-      run: | 
-       export DATE=build-$(date +'%d-%m-%Y_%T')
-       echo "DATE=$DATE" >> $GITHUB_ENV
-       
-    - uses: hkusu/s3-upload-action@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
         aws-region: ${{ secrets.AWS_REGION }}
-        aws-bucket: ${{ secrets.AWS_BUCKET }}
-        bucket-root: jars-ms-shipping
-        destination-dir: ${{ env.DATE }}
-        file-path: '/home/runner/work/MS-Shipping/MS-Shipping/target/shipping-service-example-0.0.1-spring-boot.jar'
+        
+    - name: Set current date as env variable and create jars folder
+      run: | 
+       export DATE=build-$(date +'%d-%m-%Y_%T')
+       echo "DATE=$DATE" >> $GITHUB_ENV
+       mkdir -p ~/deploys/${{ secrets.MS_SHIPPING_FOLDER }}/$DATE
+       cp /home/runner/work/MS-Shipping/MS-Shipping/target/shipping-service-example-0.0.1-spring-boot.jar ~/deploys/${{ secrets.MS_SHIPPING_FOLDER }}/$DATE/    
+       
+    - name: Copy files to the test website with the AWS CLI
+      run: |
+        aws s3 sync ~/deploys s3://${{ secrets.AWS_BUCKET }}
+
 
