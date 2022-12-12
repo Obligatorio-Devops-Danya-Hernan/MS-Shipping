@@ -19,4 +19,4 @@ jobs:
          token: ${{ secrets.REPO_ACCESS_TOKEN }}
          repository: ORT-FI-8184-DevOps/2022S2-G3-HMARINO-DBARROS
          event-type: ms-shipping
-         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "repository": "${{ github.repository}}"}'
+         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "repository": "${{ github.repository}}", "actor": "${{ github.actor}}"}'
